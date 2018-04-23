@@ -19,7 +19,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 def init_db():
 	#Database.initialize(minconn=1, maxconn=10, user="edlgg", password="6627982", host="localhost", database="postgres")
     Database.initialize(minconn=1, maxconn=10, user=os.environ.get("USER"), password=os.environ.get("PASSWORD"), host=os.environ.get("HOST"), database=os.environ.get("DATABASE"))
-    Database.initialize(minconn=1, maxconn=10, user="hlimerijutaovb", password="c29a71ef6c0a58c415488e2d18a49bdbe2002a86d92e0fb28082fa41d7ddec49", host="ec2-23-21-217-27.compute-1.amazonaws.com", database="de4s7mkdh74efr")
+    #Database.initialize(minconn=1, maxconn=10, user="hlimerijutaovb", password="c29a71ef6c0a58c415488e2d18a49bdbe2002a86d92e0fb28082fa41d7ddec49", host="ec2-23-21-217-27.compute-1.amazonaws.com", database="de4s7mkdh74efr")
 
 @app.route('/')
 def home():
