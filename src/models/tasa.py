@@ -13,7 +13,7 @@ class Tasa:
     def __repr__(self):
         return "<Tasa>".format(self.tId)
 
-     def saveToDb(self):
+    def saveToDb(self):
         with CursorFromConnectionFromPool() as cursor:
             cursor.execute("INSERT INTO tasa (tId, tipo, periodoenmeses, interesanual, interesdiario, interestotal) VALUES (%s, %s, %s, %s, %s, %s) on conflict do nothing",(self.tId, self.tipo, self.periodoEnMeses, self.interesAnual, self.interesDiario, self.interesTotal))
 
