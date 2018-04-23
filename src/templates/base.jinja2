@@ -30,6 +30,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="">{{fecha.fechaActual}}</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('inversiones.crea_inversion') }}">Nueva Inversión</a></li>
+                </ul>
                 {%if session['nombre']%}
                 <ul class="nav navbar-nav navbar-right">
                     <li><a>{{session['nombre']}}</a></li>
