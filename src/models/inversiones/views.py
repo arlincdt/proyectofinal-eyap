@@ -132,7 +132,7 @@ def sacarInversion(iId):
     inversion.deleteFromDb()
     return redirect(url_for('inversiones.getInversionesCliente', cId = cliente.cId))
 
-@fecha_blueprint.route('/crea_inversion', methods=['GET', 'POST'])
+@inversion_blueprint.route('/crea_inversion', methods=['GET', 'POST'])
 def fecha():
     fecha = Fecha.getFecha()
     if request.method == 'POST':
