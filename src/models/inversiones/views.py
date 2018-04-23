@@ -66,7 +66,12 @@ def nuevaInversion():
         return redirect(url_for('inversiones.getInversionesCliente', cId = cId ))
 
     fecha = Fecha.getFecha()
-    return render_template("nueva_inversion.jinja2", fecha=fecha)
+
+    tasas = []
+    tasas = Tasa.getAll()
+
+
+    return render_template("nueva_inversion.jinja2", fecha=fecha, tasas = tasas)
 
 
 @inversion_blueprint.route('reinvertirMismaCantidad/<string:iId>')
