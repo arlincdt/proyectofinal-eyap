@@ -9,8 +9,8 @@
             <label for="fecha">Tipo de Inversion</label>
             <select name="tId" id="tId"class="form-control" >
                 {% if tasas %}
-                {% for i in range(inversiones|length) %}
-                <option value="{tasas[i].tId}">{tasas[i].tipo</option>
+                {% for i in range(tasas|length) %}
+                <option value="{tasas[i].tId}">{tasas[i].tipo}</option>
                 {%endfor%}
                 {%endif%}
             </select>
