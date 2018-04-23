@@ -133,7 +133,7 @@ def sacarInversion(iId):
     return redirect(url_for('inversiones.getInversionesCliente', cId = cliente.cId))
 
 @inversion_blueprint.route('/crea_inversion', methods=['GET', 'POST'])
-def fecha():
+def crea_inversion():
     fecha = Fecha.getFecha()
     if request.method == 'POST':
         fecha = request.form['fecha']
