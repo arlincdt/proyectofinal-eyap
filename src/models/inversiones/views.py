@@ -135,26 +135,14 @@ def sacarInversion(iId):
 @inversion_blueprint.route('/crea_inversion', methods=['GET', 'POST'])
 def crea_inversion():
     if request.method == 'POST':
-        id = request.form['id']
+        _id = request.form['id']
         nombre = request.form['nombre']
         periodo = request.form['periodo']
         interes = request.form['interes']
 
-        inversion = Inversion(id, nombre, periodo, interes, interes/365, interes/12*periodo)
+        inversion = Inversion(_id, nombre, periodo, interes, interes/365, interes/12*periodo)
 
         inversion.saveToDb()
     
 
     return render_template("crea_inversion.jinja2", fecha=fecha)
-
-
-
-    self.iId = iId
-        self.cId = cId
-        self.fechaInicial = fechaInicial
-        self.fechaFinal = fechaFinal
-        self.tId = tId
-        self.montoInicial = montoInicial
-        self.montoFinal = montoFinal
-    
-
