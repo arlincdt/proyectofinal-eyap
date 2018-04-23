@@ -140,9 +140,9 @@ def crea_inversion():
         periodo = request.form['periodo']
         interes = request.form['interes']
 
-        inversion = Inversion(_id, nombre, int(periodo), int(interes)*1.0, int(interes)/365.0, int(interes)/12.0*int(periodo))
+        tasa = Tasa(_id, nombre, int(periodo), int(interes)*1.0, int(interes)/365.0, int(interes)/12.0*int(periodo))
 
-        inversion.saveToDb()
+        tasa.saveToDb()
     
     fecha = Fecha.getFecha()
     return render_template("crea_inversion.jinja2", fecha=fecha)
