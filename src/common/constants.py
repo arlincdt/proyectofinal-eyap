@@ -1,0 +1,2 @@
+USER = "edlgg"
+PASSWORD = "6627982"

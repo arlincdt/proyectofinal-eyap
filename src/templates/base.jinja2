@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Fondo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet"> {% include 'html_dependencies.jinja2' %}
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" title="Home">Fondo</a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('fechas.fecha') }}">Viaja en el tiempo</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="">{{fecha.fechaActual}}</a></li>
+                </ul>
+                {%if session['nombre']%}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>{{session['nombre']}}</a></li>
+                    <li><a href="{{ url_for('clientes.getClientes') }}"><span class="glyphicon glyphicon-user"></span> Tus Clientes</a></li>
+                    <li><a href="{{ url_for('promotores.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                </ul>
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url_for('promotores.login')}}"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+                </ul>
+                {% endif %}
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="content container">
+        {% block content %} {% endblock %}
+    </div>
+
+</body>
+
+</html>

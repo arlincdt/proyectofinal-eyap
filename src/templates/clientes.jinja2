@@ -1,0 +1,32 @@
+{%extends "base.jinja2" %} {% block content %}
+
+<div class="page-header">
+    <h1>Clientes {{promotor.nombre}}<small> Admin : {{promotor.isAdmin}}</small></h1>
+    
+    <p>Ganancias Fondo: <strong>${{ganancias}}</strong></p>
+    
+</div>
+<div class="list-group">
+    {%if clientes%}
+    {% for i in range(clientes|length) %}
+    <a {% if not promotor.isAdmin %} href="{{ url_for('inversiones.getInversionesCliente', cId = clientes[i].cId )}}"{% endif %} class="list-group-item ">
+        <h4 class = "list-group-item-heading ">
+            {{clientes[i].nombre}}</h4>
+        <p class="list-group-item-text"> 
+        Promotor: <strong>{{clientes[i].nombrePromotor}}</strong><br />
+        Saldo Total: <strong>${{clientes[i].saldoVista + valoresActuales[i]}}</strong>
+        Saldo Vista: <strong>${{clientes[i].saldoVista}}</strong>
+        Saldo Invertido: <strong>${{valoresActuales[i]}}</strong><br />
+        </p>
+    </a>
+    {% endfor %}
+    {%endif%}
+</div>
+
+{% if not promotor.isAdmin %}
+<a class = "btn btn-success" href="{{ url_for('clientes.nuevoCliente') }}"><span class="glyphicon glyphicon-plus"></span> Create New</a>
+{% endif %}
+
+{% endblock %}
+
+

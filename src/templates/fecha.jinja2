@@ -1,0 +1,16 @@
+{%extends "base.jinja2" %} {% block content %}
+
+<div class="page-header">
+    <h1>Viaja en el Tiempo</h1>    
+</div>
+<div class="form-size">
+    <form method="POST">
+        <div class="form-group">
+            <label for="fecha">Fecha Deseada</label>
+            <input type="text" class="form-control" id="fecha" name="fecha" placeholder="YYYY-MM-DD">
+        </div>
+        <button type="submit" class="btn btn-primary">Viaja</button>
+        
+    </form>
+</div>
+{% endblock %}

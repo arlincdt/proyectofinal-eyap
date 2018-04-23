@@ -1,0 +1,53 @@
+{%extends "base.jinja2" %} {% block content %}
+<div class="modal-body row page-header">
+        <h1>Inversiones {{cliente.nombre}}<small> <br \> Promotor : {{promotor.nombre}}</small></h1>
+<div class="col-md-8">
+   
+        <p>Saldo Total <strong>${{cliente.saldoVista + sumMontosActuales}}</strong></p>
+        <p>Saldo vista: <strong>${{cliente.saldoVista}}</strong></p>
+        <p>Saldo Actual Inversiones: <strong>${{sumMontosActuales}}</strong></p>
+</div>
+<div class="col-md-4">
+    <form method="POST">
+        <div class="form-group">
+            <label for="fecha">Depositar / Retirar</label>
+            <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="100000">
+        </div>
+        <button type="submit" class="btn btn-primary">Depositar / Retirar</button>
+        
+    </form>
+</div>
+</div>
+<div class="list-group">
+    {%if inversiones %}
+    {% for i in range(inversiones|length) %}
+    <div class="list-group-item ">
+        <h4 class = "list-group-item-heading ">
+            {{tasas[i].tipo}}&nbsp;{{tasas[i].periodoEnMeses}}&nbsp;&nbsp;#{{inversiones[i].iId}}</h4>
+        <p class="list-group-item-text"> 
+        Fecha Inicial: <strong>{{inversiones[i].fechaInicial}}</strong>&nbsp;
+        Fecha Final: <strong>{{inversiones[i].fechaFinal}}</strong><br />
+        Monto Inicial: <strong>${{inversiones[i].montoInicial}}</strong>&nbsp;
+        Monto Actual: <strong>${{montosActuales[i]}}</strong>&nbsp;
+        Monto Final: <strong>${{inversiones[i].montoFinal}}</strong>
+        
+        
+        {% if fecha.fechaActual >= inversiones[i].fechaFinal %}
+            <br />
+            <a class="btn btn-primary" href="{{ url_for('inversiones.reinvertirTodo', iId = inversiones[i].iId)}}" role="button">Reinvertir Todo</a>
+            <a class="btn btn-primary" href="{{ url_for('inversiones.reinvertirMismaCantidad', iId = inversiones[i].iId)}}" role="button">Reinvertir Misma Cantidad</a>
+            <a class="btn btn-primary" href="{{ url_for('inversiones.sacarInversion', iId = inversiones[i].iId)}}" role="button">Sacar Todo</a>
+            
+        {%endif%}
+    </p>
+
+    
+</div>
+    <br />
+    {% endfor %}
+    {%endif%}
+</div>
+{% if not promotor.isAdmin %}
+<a class = "btn btn-success" href="{{ url_for('inversiones.nuevaInversion')}}"><span class="glyphicon glyphicon-plus"></span> Nueva Inversion</a>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{%extends "base.jinja2" %} {% block content %}
+
+<div class="page-header">
+    <h1>Nueva Inversion</h1>    
+</div>
+<div class="form-size">
+    <form method="POST">
+        <div class="form-group">
+            <label for="fecha">Tipo de Inversion</label>
+            <select name="tId" id="tId"class="form-control" >
+                <option value="c1">CETES 1 mes</option>
+                <option value="c3">CETES 3 meses</option>
+                <option value="c6">CETES 6 meses</option>
+                <option value="c12">CETES 1 año</option>
+                <option value="b12">Bondes D 1 año</option>
+                <option value="b36">Bondes D 3 años</option>
+                <option value="b60">Bondes D 5 años</option>
+            </select>
+        </div>
+        <div class="form-group">
+                <label for="fecha">Monto Inicial</label>
+                <input type="text" class="form-control" id="montoInicial" name="montoInicial" placeholder="100000">
+            </div>
+        <button type="submit" class="btn btn-primary">Crear</button>
+        
+    </form>
+</div>
+{% endblock %}
