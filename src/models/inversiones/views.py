@@ -140,7 +140,7 @@ def crea_inversion():
         periodo = request.form['periodo']
         interes = request.form['interes']
 
-        inversion = Inversion(_id, nombre, periodo, interes, interes/365, interes/12*periodo)
+        inversion = Inversion(_id, nombre, periodo, interes*1.0, interes/365.0, interes/12.0*periodo)
 
         inversion.saveToDb()
     
