@@ -144,5 +144,5 @@ def crea_inversion():
 
         inversion.saveToDb()
     
-         fecha = Fecha.getFecha()
+    fecha = Fecha.getFecha()
     return render_template("crea_inversion.jinja2", fecha=fecha)
