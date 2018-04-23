@@ -10,7 +10,7 @@
             <select name="tId" id="tId"class="form-control" >
                 {% if tasas %}
                 {% for i in range(tasas|length) %}
-                <option value="{tasas[i].tId}">{tasas[i].tipo}</option>
+                <option value="{{tasas[i].tId}}">{{tasas[i].tipo}}</option>
                 {%endfor%}
                 {%endif%}
             </select>
